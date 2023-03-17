@@ -60,6 +60,9 @@ const cube3 = new THREE.Mesh(
 cube3.position.set(2,1,1)
 group.add(cube3)
 
+// Texture
+// const textureLoader = new THREE.TextureLoader()
+// const texture = textureLoader.load('/textures/door/color.jpg')
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000)
