@@ -328,13 +328,13 @@ scene.add(ambientLight)
    renderer.render(scene, camera);
 
  }
-
+animate();
  // Camera Controls
 const controls = new OrbitControls(camera, canvas)
 controls.target.set(mapCenterWidth, 0, mapCenterHeight);
 controls.enableDamping = true
 
-animate();
+
 
  // Helper functions
  function createMapTile(size, material, x, y, z) {
