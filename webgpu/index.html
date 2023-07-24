@@ -33,6 +33,21 @@
 			const canvasFormat = navigator.gpu.getPreferredCanvasFormat();
 
 			const GRID_SIZE = 32;
+			// Create an array representing the active state of each cell.
+			const cellStateArray = new Uint32Array(GRID_SIZE * GRID_SIZE);
+
+			// Create a storage buffer to hold the cell state.
+			const cellStateStorage = device.createBuffer({
+			  label: "Cell State",
+			  size: cellStateArray.byteLength,
+			  usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST,
+			});
+			// Mark every third cell of the grid as active.
+			for (let i = 0; i < cellStateArray.length; i += 3) {
+			  cellStateArray[i] = 1;
+			}
+			device.queue.writeBuffer(cellStateStorage, 0, cellStateArray);
+
 			 // Create a uniform buffer that describes the grid.
 			const uniformArray = new Float32Array([GRID_SIZE, GRID_SIZE]);
 			const uniformBuffer = device.createBuffer({
@@ -70,7 +85,7 @@
 			    shaderLocation: 0, // Position, see vertex shader
 			  }],
 			};
-
+			// Shader
 			const cellShaderModule = device.createShaderModule({
 			  label: 'Cell shader',
 			  code: `
@@ -81,21 +96,26 @@
 
 				struct VertexOutput {
 				  @builtin(position) pos: vec4f,
-				  @location(0) cell: vec2f, // New line!
+				  @location(0) cell: vec2f, 
 				};
 
 				@group(0) @binding(0) var<uniform> grid: vec2f;
+				@group(0) @binding(1) var<storage> cellState: array<u32>; 
 				
 				@vertex
-				fn vertexMain(input: VertexInput) -> VertexOutput  {
-				  let i = f32(input.instance);
+				fn vertexMain(@location(0) pos: vec2f,
+				              @builtin(instance_index) instance: u32) -> VertexOutput {
+				  let i = f32(instance);
 				  let cell = vec2f(i % grid.x, floor(i / grid.x));
+				  let state = f32(cellState[instance]); // New line!
+							
 				  let cellOffset = cell / grid * 2;
-				  let gridPos = (input.pos + 1) / grid - 1 + cellOffset;
-				
+				  // Scale the position by the cell's active state.
+				  let gridPos = (pos*state+1) / grid - 1 + cellOffset;
+							
 				  var output: VertexOutput;
 				  output.pos = vec4f(gridPos, 0, 1);
-				  output.cell = cell; // New line!
+				  output.cell = cell;
 				  return output;
 				}
 
@@ -130,7 +150,11 @@
 				entries: [{
 					binding: 0,
 					resource: { buffer: uniformBuffer }
-				}]
+				},
+				{
+  				  binding: 1,
+  				  resource: { buffer: cellStateStorage }
+  				}]
 			})
 			const encoder = device.createCommandEncoder();
 			const pass = encoder.beginRenderPass({
