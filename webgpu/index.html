@@ -16,8 +16,7 @@
         <canvas width="512" height="512"></canvas>
     	<script type="module">
      		const canvas = document.querySelector("canvas");
-
-			
+			let isPaused = false;
 
       	// Your WebGPU code will begin here!
 			if (!navigator.gpu) {
@@ -276,51 +275,56 @@
 			  }),
 			];
 			
-			
-			
-
-			
-
-			
 			// Move all of our rendering code into a function
 			function updateGrid() {
-			  
-			  const encoder = device.createCommandEncoder();
-			  const computePass = encoder.beginComputePass();
+				if (!isPaused) {
+					const encoder = device.createCommandEncoder();
+					const computePass = encoder.beginComputePass();	
 
-			  computePass.setPipeline(simulationPipeline);
-			  computePass.setBindGroup(0, bindGroups[step % 2]);
+					computePass.setPipeline(simulationPipeline);
+					computePass.setBindGroup(0, bindGroups[step % 2]);	
 
-			  const workgroupCount = Math.ceil(GRID_SIZE / WORKGROUP_SIZE);
-			  computePass.dispatchWorkgroups(workgroupCount, workgroupCount);
-			  
-			  computePass.end();
+					const workgroupCount = Math.ceil(GRID_SIZE / WORKGROUP_SIZE);
+					computePass.dispatchWorkgroups(workgroupCount, workgroupCount);
 
-			  step++; // Increment the step count
-
-				// Start a render pass 
-			  const pass = encoder.beginRenderPass({
-			    colorAttachments: [{
-			      view: context.getCurrentTexture().createView(),
-			      loadOp: "clear",
-			      clearValue: { r: 0, g: 0, b: 0.4, a: 1.0 },
-			      storeOp: "store",
-			    }]
-			  });
-		  
-			  // Draw the grid.
-			  pass.setPipeline(cellPipeline);
-			  pass.setBindGroup(0, bindGroups[step % 2]); // Updated!
-			  pass.setVertexBuffer(0, vertexBuffer);
-			  pass.draw(vertices.length / 2, GRID_SIZE * GRID_SIZE);
-		  
-			  // End the render pass and submit the command buffer
-			  pass.end();
-			  device.queue.submit([encoder.finish()]);
+					computePass.end();		
+					step++; // Increment the step count		
+					// Start a render pass 
+					const pass = encoder.beginRenderPass({
+					  colorAttachments: [{
+					    view: context.getCurrentTexture().createView(),
+					    loadOp: "clear",
+					    clearValue: { r: 0, g: 0, b: 0.4, a: 1.0 },
+					    storeOp: "store",
+					  }]
+					});
+				
+					// Draw the grid.
+					pass.setPipeline(cellPipeline);
+					pass.setBindGroup(0, bindGroups[step % 2]); // Updated!
+					pass.setVertexBuffer(0, vertexBuffer);
+					pass.draw(vertices.length / 2, GRID_SIZE * GRID_SIZE);
+				
+					// End the render pass and submit the command buffer
+					pass.end();
+					device.queue.submit([encoder.finish()]);
+				}
 			}
 
 			// Schedule updateGrid() to run repeatedly
-			setInterval(updateGrid, UPDATE_INTERVAL);		
+			const playing = setInterval(updateGrid, UPDATE_INTERVAL);
+
+			document.getElementById ("pausebtn").addEventListener ("click", pauseInterval, false);
+			document.getElementById ("playbtn").addEventListener ("click", play, false);
+			
+			function play() { 
+				isPaused = false;
+			}	
+			function pauseInterval() {
+				isPaused = true;
+			}	
     	</script>
+		<button id="pausebtn">Pause</button>
+		<button id="playbtn">Play</button>
 	</body>
 </html>
