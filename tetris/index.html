@@ -4,23 +4,16 @@
 		<meta charset="utf-8">
 		<title>WebGPU Game of Life</title>
 		<style>
-			body { 
-				box-sizing: border-box;
-				margin: 0;
+			body { margin: 0;
 				width: 100%;
 				height: 100vh;
-				display:flex;
-				align-items: center;
-				justify-content: center;
-				flex-direction: column; 
-			}
-			.playback-controls {
-				margin: 8px;
-			}
+			display:flex;
+			align-items: center;
+			justify-content: center; }
 		</style>
 	</head>
 	<body>
-        <canvas width="1000" height="1000"></canvas>
+        <canvas width="512" height="512"></canvas>
     	<script type="module">
      		const canvas = document.querySelector("canvas");
 			let isPaused = false;
@@ -43,7 +36,7 @@
 			let step = 0; // Track how many simulation steps have been run
 
 			// Grid Controls
-			const GRID_SIZE = 64;
+			const GRID_SIZE = 32;
 			
 			// // Mark every third cell of the first grid as active.
 			// for (let i = 0; i < cellStateArray.length; i+=3) {
@@ -331,9 +324,7 @@
 				isPaused = true;
 			}	
     	</script>
-		<div class="playback-controls">
-			<button id="pausebtn">Pause</button>
-			<button id="playbtn">Play</button>
-		</div>
+		<button id="pausebtn">Pause</button>
+		<button id="playbtn">Play</button>
 	</body>
 </html>
