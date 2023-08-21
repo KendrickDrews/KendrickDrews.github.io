@@ -5,3 +5,14 @@
   display:flex;
   justify-content: center;
 }
+canvas {
+  touch-action: none;
+}
+.htmlScreen iframe {
+  /* aspect-ratio: 16/9; */
+  width: 1024px;
+  height: 670px;
+  border: none;
+  border-radius: 20px;
+  background: black;
+}
