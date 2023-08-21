@@ -317,7 +317,9 @@ scene.add(ambientLight)
  camera.position.x = 10;
  camera.lookAt(new THREE.Vector3(10, 10, 10));
  
-
+ // Camera Controls
+ const controls = new OrbitControls(camera, canvas)
+ 
  // Animation loop
  function animate() { 
 
@@ -329,8 +331,7 @@ scene.add(ambientLight)
 
  }
 animate();
- // Camera Controls
-const controls = new OrbitControls(camera, canvas)
+
 controls.target.set(mapCenterWidth, 0, mapCenterHeight);
 controls.enableDamping = true
 
