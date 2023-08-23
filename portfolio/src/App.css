@@ -1,3 +1,6 @@
+* {
+  touch-action: none;
+}
 #canvas-container {
   width: 100%;
   margin: 0 auto;
@@ -15,9 +18,10 @@ canvas {
   border: none;
   border-radius: 20px;
   background: black;
-  /* overflow: scroll; */
+  touch-action: none;
 }
 .resume-container {
   overflow-y: scroll;
   width: 100%;
+  touch-action: none;
 }
