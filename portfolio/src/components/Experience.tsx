@@ -3,14 +3,27 @@ import React from 'react'
 import { Text, Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera,  } from '@react-three/drei'
 import Resume from './Resume'
 import { useFrame, useThree } from '@react-three/fiber'
+import { useControls } from 'leva'
 
 
 export default function Experience() {
-
+    const {rotation} = useControls({
+        rotation: {
+            value: {
+                x: 0,
+                y: 0
+            },
+            min: -10,
+            max: 10,
+            steps: 0.1,
+            joystick: 'invertY'
+        }
+    })
+    console.log(rotation);
     const [zoom, setZoom] = React.useState(false)
     const computer = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
     const computerPosition = {x: -0.5, y: - 1.2, z: - 1.2}
-    const computerRef = React.useRef()
+    const computerRef = React.useRef<any>()
 
     const cameraRef = React.useRef<any>()
     const cameraZoom = zoom ? 1 : 8;
@@ -22,10 +35,12 @@ export default function Experience() {
         if (zoom) {
             cam.lookAt(0,0,0);
             
-            setZoom(!zoom);
+            // setZoom(!zoom);
         }
         else {
-            cam.lookAt(computerPosition.x, computerPosition.y, computerPosition.z)
+            cam.lookAt(computerRef.current.position);
+            cam.rotation.set(0.1, 0.4, 0);
+            cam.updateProjectionMatrix()
             setZoom(!zoom);
         }
         

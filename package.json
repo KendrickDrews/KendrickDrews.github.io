@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/KendrickDrews/KendrickDrews.github.io/issues"
   },
-  "homepage": "https://github.com/KendrickDrews/KendrickDrews.github.io#readme"
+  "homepage": "https://github.com/KendrickDrews/KendrickDrews.github.io#readme",
+  "dependencies": {
+    "antd": "^5.8.4",
+    "leva": "^0.9.35"
+  }
 }
