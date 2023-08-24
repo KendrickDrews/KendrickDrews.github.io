@@ -119,7 +119,6 @@ export default function Experience() {
                             shape="circle"
                             onClick={() => focusScreen()}
                             icon={zoom ? <ZoomOutOutlined /> : <ZoomInOutlined />}
-                            tooltip={<div> {zoom ? "Zoom Out" : "Zoom In"} </div>} 
                         />
                     </Tooltip>
                 </Html>
