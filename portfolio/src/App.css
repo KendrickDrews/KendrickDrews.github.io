@@ -17,11 +17,14 @@ canvas {
   height: 670px;
   border: none;
   border-radius: 20px;
-  background: black;
+  /* background: black; */
+  background-color: white;
   touch-action: none;
 }
 .resume-container {
   overflow-y: scroll;
   width: 100%;
   touch-action: none;
+  background: white;
+  color:black;
 }

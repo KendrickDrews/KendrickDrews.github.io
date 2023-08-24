@@ -1,17 +1,21 @@
 import React from 'react'
 // import * as THREE from 'three'
 import { Text, Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera,  } from '@react-three/drei'
+import { Button, Tooltip  } from 'antd'
 import Resume from './Resume'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
+import { CloseOutlined, FullscreenExitOutlined, FullscreenOutlined, ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
 
 
 export default function Experience() {
-    const {rotation} = useControls({
-        rotation: {
+
+    const {position} = useControls({
+        position: {
             value: {
                 x: 0,
-                y: 0
+                y: 0,
+                z: 0
             },
             min: -10,
             max: 10,
@@ -19,10 +23,14 @@ export default function Experience() {
             joystick: 'invertY'
         }
     })
-    console.log(rotation);
+    
     const [zoom, setZoom] = React.useState(false)
+
+
     const computer = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
     const computerPosition = {x: -0.5, y: - 1.2, z: - 1.2}
+    const zoomButtonPosition = {x: -2.3, y: 1.2, z: -2.8}
+
     const computerRef = React.useRef<any>()
 
     const cameraRef = React.useRef<any>()
@@ -34,8 +42,7 @@ export default function Experience() {
 
         if (zoom) {
             cam.lookAt(0,0,0);
-            
-            // setZoom(!zoom);
+            setZoom(!zoom);
         }
         else {
             cam.lookAt(computerRef.current.position);
@@ -43,8 +50,6 @@ export default function Experience() {
             cam.updateProjectionMatrix()
             setZoom(!zoom);
         }
-        
-        console.log(computerRef)
         
     }
 
@@ -64,8 +69,8 @@ export default function Experience() {
             rotation={ [0.13, 0.5, 0] }
             polar={ [ -0.4, 0.2] }
             azimuth={ [ -1, 0.75] }
-            config={ { mass: 2, tension: 200 } }
-            snap={{ mass: 4, tension: 200 } }
+            // config={ { mass: 2, tension: 200 } }
+            // snap={{ mass: 4, tension: 200 } }
         >
             <Float rotationIntensity={0.4}>
                 {/* Light from Computer */}
@@ -85,7 +90,6 @@ export default function Experience() {
                     position-x={ computerPosition.x }
                     position-y={ computerPosition.y }
                     position-z={ computerPosition.z }
-                    onClick={( ) => focusScreen()} // see note 1
                 >
                     <Html
                         transform
@@ -95,11 +99,31 @@ export default function Experience() {
                         position={ [ 0, 1.56, -1.4 ] }
                         rotation-x={ -0.256 }
                         zIndexRange={ [100,0] }
-                        onClick={() => setZoom(!zoom)}
                     > 
                         <Resume />
+                        
                     </Html>
                 </primitive>
+                {/* Zoom Button */}
+                <Html
+                    transform
+                    occlude="blending"
+                    wrapperClass='floatingButton'
+                    distanceFactor={ zoom ? 2.0 : 3.25 }
+                    position={ [ zoomButtonPosition.x, zoomButtonPosition.y, zoomButtonPosition.z ] }
+                    rotation-x={ -0.256 }
+                    zIndexRange={ [100,0] }
+                >
+                    <Tooltip title={zoom ? "Zoom Out" : "Zoom In"}>
+                        <Button 
+                            shape="circle"
+                            onClick={() => focusScreen()}
+                            icon={zoom ? <ZoomOutOutlined /> : <ZoomInOutlined />}
+                            tooltip={<div> {zoom ? "Zoom Out" : "Zoom In"} </div>} 
+                        />
+                    </Tooltip>
+                </Html>
+
                 <Text 
                     // font=""
                     fontSize={ 0.5 }
