@@ -15,8 +15,6 @@ canvas {
   width: 1024px;
   height: 670px;
   border: none;
-  border-radius: 20px;
-  /* background: black; */
   background-color: white;
   touch-action: none;
 }
@@ -36,6 +34,6 @@ canvas {
   font-size: 64px;
   margin: 0;
 }
-.resume-container h2, .resume-container h3 {
+.resume-container h2, .resume-container h3, .resume-container h4 {
   margin: 0;
 }

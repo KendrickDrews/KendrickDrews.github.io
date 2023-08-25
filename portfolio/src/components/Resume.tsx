@@ -115,13 +115,65 @@ export default function Resume() {
                 <Col> 
                     <Row><h2> Bachelors of Fine-Arts </h2></Row>
                     <Row><h3> Virginia Commonwealth University, Richmond, VA </h3></Row>
-                    <Row><h3> 2009 - 2013 </h3></Row>
+                    <Row><h4> <i>2009 - 2013</i> </h4></Row>
+                </Col> 
+            </Row>
+            <Row  align="top"> 
+                <Col span={8}>
+                    <h2> Skills </h2>
+                </Col> 
+                <Col> 
+                <Row>
+                    <Col>
+                        <ul>
+                            <li>React</li> 
+                            <li>Node</li> 
+                            <li>Redux</li> 
+                            <li>Typescript</li> 
+                            <li>Javascript</li> 
+                            <li>Cypress</li> 
+                            <li>React Testing Library</li>
+                            <li>Next</li>
+                            <li>js</li>
+                            <li>CSS</li> 
+                            <li>SCSS</li> 
+                            <li>Ant Design</li>
+                            <li>prettier</li> 
+                            <li>ESLint</li> 
+                            <li>AWS</li> 
+                            <li>Docker</li> 
+                            <li>postman</li> 
+                            <li>Yarn</li> 
+                            <li>NPM</li> 
+                        </ul>
+                     </Col>
+                    <Col>
+                        <ul>
+                            <li>MySQL</li> 
+                            <li>Confluence</li> 
+                            <li>Jira</li> 
+                            <li>GIT</li> 
+                            <li>GitLab</li> 
+                            <li>Jenkins</li> 
+                            <li>Agile</li> 
+                            <li>Customer</li> 
+                            <li>Relations</li> 
+                            <li>SCRUM Master</li> 
+                            <li>Figma</li> 
+                            <li>Photoshop</li> 
+                            <li>Sketch</li> 
+                            <li>InVision</li> 
+                            <li>Adobe XD</li> 
+                            <li>Sharepoint</li>
+                        </ul> 
+                    </Col>
+                    </Row>
                 </Col> 
             </Row>
 
             <h1>Skills</h1>
             <section>
-                <p> React, Node, Redux, Typescript, Javascript, Cypress, React Testing Library, Next.js CSS, SCSS, prettier, ESLint AWS, Docker, postman, Yarn, NPM, MySQL Confluence, Jira, GIT, GitLab, Jenkins Agile, Customer Relations, SCRUM Master Figma, Photoshop, Sketch, InVision, Adobe XD, Sharepoint</p>
+                <p> </p>
             </section>
 
             <h1>Education</h1>
