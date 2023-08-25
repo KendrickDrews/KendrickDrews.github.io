@@ -3,26 +3,26 @@ import React from 'react'
 import { Text, Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera,  } from '@react-three/drei'
 import { Button, Tooltip  } from 'antd'
 import Resume from './Resume'
-import { useFrame, useThree } from '@react-three/fiber'
-import { useControls } from 'leva'
-import { CloseOutlined, FullscreenExitOutlined, FullscreenOutlined, ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
+import { useThree } from '@react-three/fiber'
+// import { useControls } from 'leva'
+import { ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
 
 
 export default function Experience() {
 
-    const {position} = useControls({
-        position: {
-            value: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            min: -10,
-            max: 10,
-            steps: 0.1,
-            joystick: 'invertY'
-        }
-    })
+    // const {position} = useControls({
+    //     position: {
+    //         value: {
+    //             x: 0,
+    //             y: 0,
+    //             z: 0
+    //         },
+    //         min: -10,
+    //         max: 10,
+    //         steps: 0.1,
+    //         joystick: 'invertY'
+    //     }
+    // })
     
     const [zoom, setZoom] = React.useState(false)
 
