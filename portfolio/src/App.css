@@ -11,8 +11,7 @@
 canvas {
   touch-action: none;
 }
-.htmlScreen  div {
-  /* aspect-ratio: 16/9; */
+.htmlScreen > div:nth-child(-n + 3) {
   width: 1024px;
   height: 670px;
   border: none;
@@ -23,8 +22,20 @@ canvas {
 }
 .resume-container {
   overflow-y: scroll;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 1024px;
+  height: 670px;
   touch-action: none;
-  background: white;
+  background: linear-gradient(90deg, #cccccc 32%, #ffffff 0%);
   color:black;
+  box-sizing: border-box;
+  padding: 28px;
+}
+.resume-container h1 {
+  font-size: 64px;
+  margin: 0;
+}
+.resume-container h2, .resume-container h3 {
+  margin: 0;
 }
