@@ -1,9 +1,9 @@
 {
-  "name": "portfolio",
+  "name": "kendrickdrews.github.io",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://kendrickdrews.github.io/portfolio/",
+  "homepage": "https://kendrickdrews.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
