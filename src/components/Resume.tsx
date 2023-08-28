@@ -1,7 +1,10 @@
 
-import { Col, Row } from 'antd';
+import { PhoneTwoTone, MailTwoTone, HomeTwoTone } from '@ant-design/icons';
+import { Col, Divider, Row } from 'antd';
 
 export default function Resume() {
+
+    const jobMetaOffset = { span: 7, gap: 1 }
 
     return <>
         <div className="resume-container">
@@ -13,35 +16,42 @@ export default function Resume() {
                     <Row><h3> Front End Developer / UI / UX </h3></Row>
                 </Col> 
             </Row>
-            
+            <Divider/>
             <Row  align="middle" justify="center"> 
-                <Col span={8}>
-                    <h2> Contact </h2>
+                <Col span={7} pull={1}>
+                    <Row justify='end'>
+                        <h2> Contact </h2>
+                    </Row>
                 </Col> 
                 <Col span={16}> 
-                    <Row>
-                        <Col span={8}> 571 294 5260 </Col>
-                        <Col span={8}> drewskenny@gmail.com </Col>
-                        <Col span={8}> Howell, Michigan, USA </Col>
+                    <Row justify="space-between" align="middle">
+                        <Col span={8} className="center-text"> <PhoneTwoTone /> 571 294 5260 </Col>
+                        <Col span={8} className="center-text"> <MailTwoTone /> drewskenny@gmail.com </Col>
+                        <Col span={8} className="center-text"> <HomeTwoTone /> Michigan, USA </Col>
                     </Row>
                 </Col> 
             </Row>
-            <Row  align="middle"> 
-                <Col span={8}>
-                    <h2> Work Experience </h2>
-                </Col> 
-            </Row>
+            <Divider/>
             <Row  align="middle" justify="center"> 
-                <Col span={8}>
-                        <Row> Mar 2019 - present </Row>
-                        <Row> NU Borders </Row>
-                        <Row> Reston VA /Remote </Row>
+                <Col span={7} pull={1}>
+                    <Row justify='end'>
+                        <h2> Work Experience </h2>
+                    </Row>
                 </Col> 
+                <Col span={16} />
+            </Row>
+            <Row  align="top" justify="center"> 
+                <Col span={jobMetaOffset.span}>
+                        <Row justify="end"> 03/19 - Now </Row>
+                        <Row justify="end"> NU Borders </Row>
+                        <Row justify="end"> Reston VA / Remote </Row>
+                </Col> 
+                <Col span={jobMetaOffset.gap}> </Col> 
                 <Col span={16}> 
                         <Row > <h3>Senior Front End Developer</h3> </Row>
                         <Row > Developed React applications with Node backends for the Defense Intelligence Agency and United States Department of State. Responsible for Front End Architecture. Worked across teams to develop microservices. Produced data-visualizations and quarterly reports. </Row>
                         <Row > 
-                            <ul>
+                            <ul className='job-tech-stack'>
                                 <li> Next.js, React, Svelte, Redux, eslint, Jest, Cypress, Playwright, webpack, Parcel, TypeScript, JavaScript </li>
                                 <li>Node.js, Express, ElasticSearch, Kibana, Spark, Java/Scala/Kotlin, Rust, Docker, Kubernetes, saltstack</li>
                                 <li>AWS, EC2, Mongo, PostgresSQL, Lambda, ECS, EMR, Terraform, GitHub, BitBucket, Jenkins, blockchain</li>
@@ -51,11 +61,13 @@ export default function Resume() {
                 </Col> 
             </Row>
             <Row  align="top" justify="center"> 
-                <Col span={8}>
-                        <Row> April 2018 - February 2019 </Row>
-                        <Row> Amida </Row>
-                        <Row> Washington DC </Row>
+                <Col span={jobMetaOffset.span}>
+                        <Row justify="end"> 04/18 - 02/19 </Row>
+                        <Row justify="end"> Amida </Row>
+                        <Row justify="end"> Washington DC </Row>
                 </Col> 
+                
+                <Col span={jobMetaOffset.gap}> </Col>
                 <Col span={16}> 
                         <Row > <h3>UI/UX Developer</h3> </Row>
                         <Row > Developed client applications with React. Conduct user interviews, user testing, and analytics for developmental work on VA Software. Develop front-end solutions for web applications. Producing wireframes, mockups, prototypes, and front-end code.
@@ -71,11 +83,13 @@ export default function Resume() {
                 </Col> 
             </Row>
             <Row  align="top" justify="center"> 
-                <Col span={8}>
-                        <Row> January 2016 - March 2018 </Row>
-                        <Row> TRI </Row>
-                        <Row> Maryland </Row>
+                <Col span={jobMetaOffset.span}>
+                        <Row justify="end"> 01/16 - 03/18 </Row>
+                        <Row justify="end"> TRI </Row>
+                        <Row justify="end"> Maryland </Row>
                 </Col> 
+                
+                <Col span={jobMetaOffset.gap}> </Col>
                 <Col span={16}> 
                         <Row > <h3>Front End Developer</h3> </Row>
                         <Row > Create, Edit, and/or Delete HTML and other files then publish changes to public website(s). Managing government webpages to provide 508 compliant and user-friendly experiences. Responsible for creating and delivering server-side code that follows company standards and procedures. Writing code and scripts to assist our database developers, testers, and senior developers.</Row>
@@ -90,15 +104,17 @@ export default function Resume() {
                 </Col> 
             </Row>
             <Row  align="top" justify="center"> 
-                <Col span={8}>
-                        <Row> January 2014 - January 2016 </Row>
-                        <Row> The INCLab </Row>
-                        <Row> Tysons Corner, VA </Row>
+                <Col span={jobMetaOffset.span}>
+                        <Row justify="end"> 01/14 - 01/16 </Row>
+                        <Row justify="end"> The INCLab </Row>
+                        <Row justify="end"> Tysons Corner, VA </Row>
                 </Col> 
+                
+                <Col span={jobMetaOffset.gap}> </Col>
                 <Col span={16}> 
-                        <Row > <h3>Senior Front End Developer</h3> </Row>
-                        <Row > Worked directly with clients to facilitate efficient design to development workflow, managed client expectations. Responsible for the creation of all visual assets; Marketing materials, animations, research, front-end code, data visualizations, wireframes, prototypes, design guides, and illustrations. Designed company website. https://www.theinclab.com </Row>
-                        <Row > 
+                        <Row> <h3>Senior Front End Developer</h3> </Row>
+                        <Row> Worked directly with clients to facilitate efficient design to development workflow, managed client expectations. Responsible for the creation of all visual assets; Marketing materials, animations, research, front-end code, data visualizations, wireframes, prototypes, design guides, and illustrations. Designed company website. https://www.theinclab.com </Row>
+                        <Row> 
                             <ul>
                                 <li> Next.js, React, Svelte, Redux, eslint, Jest, Cypress, Playwright, webpack, Parcel, TypeScript, JavaScript </li>
                                 <li>Node.js, Express, ElasticSearch, Kibana, Spark, Java/Scala/Kotlin, Rust, Docker, Kubernetes, saltstack</li>
@@ -108,23 +124,29 @@ export default function Resume() {
                         </Row>
                 </Col> 
             </Row>
+            <Divider/>
             <Row  align="top"> 
-                <Col span={8}>
-                    <h2> Education </h2>
+                <Col span={7} pull={1}>
+                    <Row justify='end'>
+                        <h2> Education </h2>
+                    </Row>
                 </Col> 
-                <Col> 
+                <Col span={16} push={1}> 
                     <Row><h2> Bachelors of Fine-Arts </h2></Row>
                     <Row><h3> Virginia Commonwealth University, Richmond, VA </h3></Row>
                     <Row><h4> <i>2009 - 2013</i> </h4></Row>
                 </Col> 
             </Row>
+            <Divider/>
             <Row  align="top"> 
-                <Col span={8}>
-                    <h2> Skills </h2>
+                <Col span={7} pull={1}>
+                    <Row justify='end'>
+                        <h2> Skills </h2>
+                    </Row>
                 </Col> 
-                <Col> 
+                <Col span={16} push={1}> 
                 <Row>
-                    <Col>
+                    <Col flex={1}>
                         <ul>
                             <li>React</li> 
                             <li>Node</li> 
@@ -133,8 +155,7 @@ export default function Resume() {
                             <li>Javascript</li> 
                             <li>Cypress</li> 
                             <li>React Testing Library</li>
-                            <li>Next</li>
-                            <li>js</li>
+                            <li>Next.js</li>
                             <li>CSS</li> 
                             <li>SCSS</li> 
                             <li>Ant Design</li>
@@ -143,12 +164,12 @@ export default function Resume() {
                             <li>AWS</li> 
                             <li>Docker</li> 
                             <li>postman</li> 
-                            <li>Yarn</li> 
-                            <li>NPM</li> 
+                            <li>Yarn</li>  
                         </ul>
                      </Col>
-                    <Col>
+                    <Col flex={1}>
                         <ul>
+                            <li>NPM</li>
                             <li>MySQL</li> 
                             <li>Confluence</li> 
                             <li>Jira</li> 
@@ -168,19 +189,8 @@ export default function Resume() {
                         </ul> 
                     </Col>
                     </Row>
-                </Col> 
+                    </Col> 
             </Row>
-
-            <h1>Skills</h1>
-            <section>
-                <p> </p>
-            </section>
-
-            <h1>Education</h1>
-            <section>
-                <h2>—  </h2>
-                <p> </p>
-            </section>
         </div>
     </>
 }
