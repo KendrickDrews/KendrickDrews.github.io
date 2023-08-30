@@ -41,7 +41,7 @@ export default function Experience() {
     const linkedInUrl = "https://www.linkedin.com/in/kendrickdrews/";
     const githubUrl = "https://github.com/KendrickDrews"
 
-    const coffeeCup = useLoader(OBJLoader, './src/assets/CHAHIN_COFFEE_CUP.obj')
+    const coffeeCup = useLoader(OBJLoader, './public/assets/CHAHIN_COFFEE_CUP.obj')
 
     const computer = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
     const computerPosition = {x: -0.5, y: - 1.2, z: - 1.2}
@@ -99,7 +99,7 @@ export default function Experience() {
                     rotation={ [ 0.1, Math.PI, 0 ] }
                     position={ [ 0, (computerPosition.y + 0.55 ),(computerPosition.z - 1.15 ) ] }
                 />
-                <primitive object={coffeeCup.scene} />
+                <primitive object={coffeeCup} />
                 {/* Computer */}
                 <primitive 
                     ref={computerRef}
