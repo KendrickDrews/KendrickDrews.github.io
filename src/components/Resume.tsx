@@ -73,8 +73,8 @@ export default function Resume() {
                         <Row > Developed client applications with React. Conduct user interviews, user testing, and analytics for developmental work on VA Software. Develop front-end solutions for web applications. Producing wireframes, mockups, prototypes, and front-end code.
                         </Row>
                         <Row > 
-                            <ul>
-                                <li> Next.js, React, Svelte, Redux, eslint, Jest, Cypress, Playwright, webpack, Parcel, TypeScript, JavaScript </li>
+                            <ul className='job-tech-stack'>
+                                <li>Next.js, React, Python, Redux, eslint, Jest, Cypress, Playwright, webpack, Parcel, TypeScript, JavaScript </li>
                                 <li>Node.js, Express, ElasticSearch, Kibana, Spark, Java/Scala/Kotlin, Rust, Docker, Kubernetes, saltstack</li>
                                 <li>AWS, EC2, Mongo, PostgresSQL, Lambda, ECS, EMR, Terraform, GitHub, BitBucket, Jenkins, blockchain</li>
                                 <li>Jira, Confluence, ZenHub, Scaled Agile, Kanban, Microservices, Microfrontends, InnerSource</li>
@@ -94,11 +94,8 @@ export default function Resume() {
                         <Row > <h3>Front End Developer</h3> </Row>
                         <Row > Create, Edit, and/or Delete HTML and other files then publish changes to public website(s). Managing government webpages to provide 508 compliant and user-friendly experiences. Responsible for creating and delivering server-side code that follows company standards and procedures. Writing code and scripts to assist our database developers, testers, and senior developers.</Row>
                         <Row > 
-                            <ul>
-                                <li> Next.js, React, Svelte, Redux, eslint, Jest, Cypress, Playwright, webpack, Parcel, TypeScript, JavaScript </li>
-                                <li>Node.js, Express, ElasticSearch, Kibana, Spark, Java/Scala/Kotlin, Rust, Docker, Kubernetes, saltstack</li>
-                                <li>AWS, EC2, Mongo, PostgresSQL, Lambda, ECS, EMR, Terraform, GitHub, BitBucket, Jenkins, blockchain</li>
-                                <li>Jira, Confluence, ZenHub, Scaled Agile, Kanban, Microservices, Microfrontends, InnerSource</li>
+                            <ul className='job-tech-stack'>
+                                <li>JavaScript, HTML, CSS, React, Sharepoint, C#, .Net, Github </li>
                             </ul> 
                         </Row>
                 </Col> 
@@ -112,14 +109,11 @@ export default function Resume() {
                 
                 <Col span={jobMetaOffset.gap}> </Col>
                 <Col span={16}> 
-                        <Row> <h3>Senior Front End Developer</h3> </Row>
+                        <Row> <h3>Front End Developer / Designer</h3> </Row>
                         <Row> Worked directly with clients to facilitate efficient design to development workflow, managed client expectations. Responsible for the creation of all visual assets; Marketing materials, animations, research, front-end code, data visualizations, wireframes, prototypes, design guides, and illustrations. Designed company website. https://www.theinclab.com </Row>
                         <Row> 
-                            <ul>
-                                <li> Next.js, React, Svelte, Redux, eslint, Jest, Cypress, Playwright, webpack, Parcel, TypeScript, JavaScript </li>
-                                <li>Node.js, Express, ElasticSearch, Kibana, Spark, Java/Scala/Kotlin, Rust, Docker, Kubernetes, saltstack</li>
-                                <li>AWS, EC2, Mongo, PostgresSQL, Lambda, ECS, EMR, Terraform, GitHub, BitBucket, Jenkins, blockchain</li>
-                                <li>Jira, Confluence, ZenHub, Scaled Agile, Kanban, Microservices, Microfrontends, InnerSource</li>
+                            <ul className='job-tech-stack'>
+                                <li>JavaScript, HTML, CSS, DreamWeaver, Photoshop, Adobe XD, Illustrator, C#, Github </li>
                             </ul> 
                         </Row>
                 </Col> 

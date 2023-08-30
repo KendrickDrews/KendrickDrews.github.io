@@ -1,17 +1,29 @@
 import React from 'react'
 // import * as THREE from 'three'
-import { Text, Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera,  } from '@react-three/drei'
+import { Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera,  } from '@react-three/drei'
 import { Button, Tooltip  } from 'antd'
 import Resume from './Resume'
-import { useThree } from '@react-three/fiber'
+import { useThree, useLoader } from '@react-three/fiber'
+import { OBJLoader } from 'three-stdlib'
 // import { useControls } from 'leva'
 import { ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
 
 
 export default function Experience() {
 
-    // const {position} = useControls({
+    // const { position, rotation } = useControls({
     //     position: {
+    //         value: {
+    //             x: 0,
+    //             y: 0,
+    //             z: 0
+    //         },
+    //         min: -10,
+    //         max: 10,
+    //         steps: 0.1,
+    //         joystick: 'invertY'
+    //     }
+    //     rotation: {
     //         value: {
     //             x: 0,
     //             y: 0,
@@ -26,6 +38,10 @@ export default function Experience() {
     
     const [zoom, setZoom] = React.useState(false)
 
+    const linkedInUrl = "https://www.linkedin.com/in/kendrickdrews/";
+    const githubUrl = "https://github.com/KendrickDrews"
+
+    const coffeeCup = useLoader(OBJLoader, './src/assets/CHAHIN_COFFEE_CUP.obj')
 
     const computer = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
     const computerPosition = {x: -0.5, y: - 1.2, z: - 1.2}
@@ -83,6 +99,7 @@ export default function Experience() {
                     rotation={ [ 0.1, Math.PI, 0 ] }
                     position={ [ 0, (computerPosition.y + 0.55 ),(computerPosition.z - 1.15 ) ] }
                 />
+                {/* <primitive object={coffeeCup.scene} /> */}
                 {/* Computer */}
                 <primitive 
                     ref={computerRef}
@@ -94,7 +111,7 @@ export default function Experience() {
                     <Html
                         transform
                         occlude="blending"
-                        wrapperClass='htmlScreen'
+                        wrapperClass="htmlScreen"
                         distanceFactor={ 1.17 }
                         position={ [ 0, 1.56, -1.4 ] }
                         rotation-x={ -0.256 }
@@ -122,15 +139,17 @@ export default function Experience() {
                         />
                     </Tooltip>
                 </Html>
-
-                <Text 
-                    // font=""
-                    fontSize={ 0.5 }
-                    position={ [ 2, 0.75, 0.75 ] }
-                    rotation-y={ -1.25 } 
-                    maxWidth={ 2 }
-                    textAlign='center'
-                > Kendrick Drews </Text>
+                <Html 
+                    transform
+                    position={ [ 1.5, 1.5, 0.5 ] }
+                    rotation-y={-1.6}
+                >
+                    <h1> Kendrick Drews </h1>
+                    <h3> Front End Developer / UI / UX </h3>
+                    <a href={linkedInUrl}>LinkedIn </a>
+                    <a href={githubUrl}> Github </a>
+                    <button> View Resume </button>
+                </Html>
             </Float>
         </PresentationControls>
 
