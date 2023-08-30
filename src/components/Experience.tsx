@@ -99,7 +99,7 @@ export default function Experience() {
                     rotation={ [ 0.1, Math.PI, 0 ] }
                     position={ [ 0, (computerPosition.y + 0.55 ),(computerPosition.z - 1.15 ) ] }
                 />
-                {/* <primitive object={coffeeCup.scene} /> */}
+                <primitive object={coffeeCup.scene} />
                 {/* Computer */}
                 <primitive 
                     ref={computerRef}
