@@ -3,10 +3,10 @@ import React from 'react'
 import { Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera,  } from '@react-three/drei'
 import { Button, Tooltip  } from 'antd'
 import Resume from './Resume'
-import { useThree, useLoader } from '@react-three/fiber'
-import { OBJLoader } from 'three-stdlib'
+import { useThree } from '@react-three/fiber'
 // import { useControls } from 'leva'
 import { ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
+import { CoffeeCup } from './CoffeeCup'
 
 
 export default function Experience() {
@@ -40,8 +40,6 @@ export default function Experience() {
 
     const linkedInUrl = "https://www.linkedin.com/in/kendrickdrews/";
     const githubUrl = "https://github.com/KendrickDrews"
-
-    const coffeeCup = useLoader(OBJLoader, 'assets/CHAHIN_COFFEE_CUP.obj')
 
     const computer = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
     const computerPosition = {x: -0.5, y: - 1.2, z: - 1.2}
@@ -99,7 +97,8 @@ export default function Experience() {
                     rotation={ [ 0.1, Math.PI, 0 ] }
                     position={ [ 0, (computerPosition.y + 0.55 ),(computerPosition.z - 1.15 ) ] }
                 />
-                <primitive object={coffeeCup} />
+
+                <CoffeeCup />
                 {/* Computer */}
                 <primitive 
                     ref={computerRef}
@@ -141,13 +140,15 @@ export default function Experience() {
                 </Html>
                 <Html 
                     transform
+                    occlude="blending"
+                    wrapperClass="personal-banner"
                     position={ [ 1.5, 1.5, 0.5 ] }
                     rotation-y={-1.6}
                 >
                     <h1> Kendrick Drews </h1>
                     <h3> Front End Developer / UI / UX </h3>
-                    <a href={linkedInUrl}>LinkedIn </a>
-                    <a href={githubUrl}> Github </a>
+                    <a href={linkedInUrl} target='_blank'>LinkedIn </a>
+                    <a href={githubUrl} target='_blank'> Github </a>
                     <button> View Resume </button>
                 </Html>
             </Float>
