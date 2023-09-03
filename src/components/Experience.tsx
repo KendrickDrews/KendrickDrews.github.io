@@ -79,23 +79,15 @@ export default function Experience() {
         />
         <PresentationControls 
             global 
-            rotation={ [0.13, 0.5, 0] }
-            polar={ [ -0.4, 0.2] }
-            azimuth={ [ -1, 0.75] }
+            // rotation={ [0.13, 0.5, 0] }
+            // polar={ [ -0.4, 0.2] }
+            // azimuth={ [ -1, 0.75] }
             // config={ { mass: 2, tension: 200 } }
             // snap={{ mass: 4, tension: 200 } }
         >
-            <Float rotationIntensity={0.4}>
+            <Float rotationIntensity={0.0}>
                 {/* Light from Computer */}
-                <rectAreaLight 
-                visible={true}
-                    width={2.5 }
-                    height={ 1.65 }
-                    intensity={ 65 }
-                    color={ '#ff6900' }
-                    rotation={ [ 0.1, Math.PI, 0 ] }
-                    position={ [ 0, (computerPosition.y + 0.55 ),(computerPosition.z - 1.15 ) ] }
-                />
+                
 
                 <DesktopScene />
                 {/* Computer */}

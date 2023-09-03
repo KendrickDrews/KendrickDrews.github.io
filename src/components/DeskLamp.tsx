@@ -5,7 +5,7 @@ Files: DeskLamp.glb [12.83KB] > DeskLamp-transformed.glb [4.76KB] (63%)
 */
 
 import * as THREE from 'three'
-import React, { useRef } from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 
