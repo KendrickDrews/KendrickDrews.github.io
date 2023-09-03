@@ -6,8 +6,7 @@ import Resume from './Resume'
 import { useThree } from '@react-three/fiber'
 // import { useControls } from 'leva'
 import { ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
-import { CoffeeCup } from './CoffeeCup'
-
+import DesktopScene from './DesktopScene'
 
 export default function Experience() {
 
@@ -98,9 +97,9 @@ export default function Experience() {
                     position={ [ 0, (computerPosition.y + 0.55 ),(computerPosition.z - 1.15 ) ] }
                 />
 
-                <CoffeeCup />
+                <DesktopScene />
                 {/* Computer */}
-                <primitive 
+                {/* <primitive 
                     ref={computerRef}
                     object={computer.scene} 
                     position-x={ computerPosition.x }
@@ -119,9 +118,9 @@ export default function Experience() {
                         <Resume />
                         
                     </Html>
-                </primitive>
+                </primitive> */}
                 {/* Zoom Button */}
-                <Html
+                {/* <Html
                     transform
                     occlude="blending"
                     wrapperClass='floatingButton'
@@ -137,8 +136,8 @@ export default function Experience() {
                             icon={zoom ? <ZoomOutOutlined /> : <ZoomInOutlined />}
                         />
                     </Tooltip>
-                </Html>
-                <Html 
+                </Html> */}
+                {/* <Html 
                     transform
                     occlude="blending"
                     wrapperClass="personal-banner"
@@ -150,7 +149,7 @@ export default function Experience() {
                     <a href={linkedInUrl} target='_blank'>LinkedIn </a>
                     <a href={githubUrl} target='_blank'> Github </a>
                     <button> View Resume </button>
-                </Html>
+                </Html> */}
             </Float>
         </PresentationControls>
 
