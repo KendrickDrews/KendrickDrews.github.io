@@ -15,8 +15,8 @@ canvas {
   text-align: center;
 }
 .htmlScreen > div:nth-child(-n + 3) {
-  width: 1024px;
-  height: 670px;
+  width: 1920px;
+  height: 1080px;
   border: none;
   touch-action: none;
 }
@@ -24,8 +24,8 @@ canvas {
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  width: 1024px;
-  height: 670px;
+  width: 1920px;
+  height: 1080px;
   touch-action: none;
   background: linear-gradient(90deg, rgb(230,244,255) 32%, #ffffff 0%);
   color:black;

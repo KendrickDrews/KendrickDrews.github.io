@@ -18,39 +18,39 @@ import Resume from './Resume'
 
 export default function DesktopScene() {
 
-    const { position, rotation, scale } = useControls({
-        position: {
-            value: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            min: -10,
-            max: 10,
-            steps: 0.1,
-            joystick: 'invertY'
-        },
-        rotation: {
-            value: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            min: -10,
-            max: 10,
-            steps: 0.1,
-            joystick: 'invertY'
-        },
-        scale: {
-            value: 1,
-            steps: 0.01
-        }
-    })
+    // const { position, rotation, scale } = useControls({
+    //     position: {
+    //         value: {
+    //             x: 0,
+    //             y: 0,
+    //             z: 0
+    //         },
+    //         min: -10,
+    //         max: 10,
+    //         steps: 0.1,
+    //         joystick: 'invertY'
+    //     },
+    //     rotation: {
+    //         value: {
+    //             x: 0,
+    //             y: 0,
+    //             z: 0
+    //         },
+    //         min: -10,
+    //         max: 10,
+    //         steps: 0.1,
+    //         joystick: 'invertY'
+    //     },
+    //     scale: {
+    //         value: 1,
+    //         steps: 0.01
+    //     }
+    // })
     const desk = { pos: { x:-2.2, y:-2.2, z:-0.6 }, rotation: { x:0, y:3, z:0 }, scale: 8.5}
     const monitor = { pos: { x:1.8, y:1.07, z:-2.4 }, rotation: { x:0, y:-0.2, z:0 }, scale: 0.005}
     const mouse = { pos: { x:2.4, y:1.05, z:-1.0 }, rotation: { x:0, y:-3.4, z:0 }, scale: 0.1}
     const keyboard = { pos: { x:0.8, y:1.047, z:-1.2 }, rotation: { x:0, y:-0.4, z:0 }, scale: 0.005}
-    const pc = { pos: { x:4.2, y:-2.2, z:0 }, rotation: { x:0, y:-5.0, z:0 }, scale: 0.02}
+    const pc = { pos: { x:4.2, y:-2.2, z:0 }, rotation: { x:0, y:-4.85, z:0 }, scale: 0.02}
     const coffeeCup = { pos: { x:-0.6, y:1.45, z:-2.8 }, rotation: { x:0, y:0, z:0 }, scale: 0.6}
     const mug = { pos: { x:3.6, y:1.047, z:-1.6 }, rotation: { x:0, y:-1.0, z:0 }, scale: 0.005}
     const lamp = { pos: { x:-1.4, y:1.07, z:-2.8 }, rotation: { x:0, y:0.8, z:0 }, scale: 3.2}
@@ -60,8 +60,8 @@ export default function DesktopScene() {
     const [ zoom, setZoom ] = React.useState(false);
     const [ lightOn, setLightOn ] = React.useState(false);
     console.log(lightOn)
-    // const linkedInUrl = "https://www.linkedin.com/in/kendrickdrews/";
-    // const githubUrl = "https://github.com/KendrickDrews"
+    const linkedInUrl = "https://www.linkedin.com/in/kendrickdrews/";
+    const githubUrl = "https://github.com/KendrickDrews"
 
     // const computerPosition = {x: -0.5, y: - 1.2, z: - 1.2}
     // const zoomButtonPosition = {x: -2.3, y: 1.2, z: -2.8}
@@ -88,7 +88,7 @@ export default function DesktopScene() {
     // }
 
     return <>
-
+        
         <rectAreaLight 
             visible={true}
             width={5 }
