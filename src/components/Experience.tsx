@@ -8,7 +8,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
 import DesktopScene from './DesktopScene'
 import { useControls } from 'leva'
-import { Vector3 } from 'three'
+import { CameraController } from './CameraController'
 
 export default function Experience() {
 
@@ -42,38 +42,36 @@ export default function Experience() {
     })
     
     const [zoom, setZoom] = React.useState(false)
-    const [camPosition, setCamPosition] = React.useState([1.2, 1.4, -1])
+    const [camPosition, setCamPosition] = React.useState({x: 4.2, y: 1.4, z: 8})
+    const [camTarget, setCamTarget] = React.useState({ x: 6.6, y: 1.4, z: 0 });
 
     const linkedInUrl = "https://www.linkedin.com/in/kendrickdrews/";
     const githubUrl = "https://github.com/KendrickDrews"
 
-    const computer = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
+   
     const computerPosition = {x: -0.5, y: - 1.2, z: - 1.2}
     const zoomButtonConfig = { pos: { x: 0.6, y: 2.2, z: -2.6 }, rotation: { x: 0.0, y: -0.2, z: 0 } }
     const resumeConfig = { pos: { x: 1.803, y: 1.92, z: -2.4 }, rotation: { x: 0.0, y: -0.2, z: 0 }, scale: 0.391 }
-    const zoomPosition = {x:1.8, y:1.07, z:-2.4}
+    
 
     const computerRef = React.useRef<any>()
 
-    const cameraRef = React.useRef<any>()
-    const cameraZoom = zoom ? -1 : 10;
-    const camX = zoom ? 0 : 1.2;
-    const camY = zoom ? 0 : 2.0;
-
     const cam = useThree((state) => state.camera)
-
+    console.log(cam)
     function focusScreen() {
 
         if (zoom) {
-            cam.position.set(0, 0, 8)
-            cam.lookAt(0,0,0);
+            
+            setCamTarget({ x: 6.6, y: 1.4, z: 0 })
+            setCamPosition({ x: 4.2, y: 1.4, z: 8 })
             
             cam.updateProjectionMatrix()
             setZoom(!zoom);
         }
         else {
+            setCamTarget({ x: 1.6, y: 2.0, z: -2.0 })
+            setCamPosition({ x: 1.6, y: 2.0, z: -1 })
             
-            cam.lookAt(resumeConfig.pos.x, resumeConfig.pos.y, resumeConfig.pos.z)
             // cam.position.set(1.3, 1.8, -1)
             cam.updateProjectionMatrix()
             setZoom(!zoom);
@@ -85,12 +83,13 @@ export default function Experience() {
         <Environment preset="city" />
 
         <color args={ [ '#241a1a' ] } attach="background" />
-        <PerspectiveCamera 
+        {/* <PerspectiveCamera 
             makeDefault 
             ref={cameraRef}
             position={[1.4, 1.9, 8]}
             rotation={[0, -0.2, 0]}
-        />
+        /> */}
+        <CameraController position={camPosition} target={camTarget} />
         <PresentationControls 
             global 
             rotation={ [0.13, 0.5, 0] }
@@ -103,7 +102,10 @@ export default function Experience() {
                 <group position={[0,0,0]}>
 
                 <DesktopScene />
-                
+                <mesh visible scale={0.2}  position={[position.x, position.y, position.z]} >
+                  <sphereGeometry args={[1, 16, 16]} />
+                  <meshStandardMaterial color="#FFFFED" transparent />
+                </mesh>
                 <Html
                     ref={computerRef}
                     transform
