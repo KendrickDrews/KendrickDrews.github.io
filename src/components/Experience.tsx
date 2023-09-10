@@ -12,69 +12,83 @@ import { CameraController } from './CameraController'
 
 export default function Experience() {
 
-    const { position, rotation, scale } = useControls({
-        position: {
-            value: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            min: -10,
-            max: 10,
-            steps: 0.1,
-            joystick: 'invertY'
-        },
-        rotation: {
-            value: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            min: -10,
-            max: 10,
-            steps: 0.1,
-            joystick: 'invertY'
-        },
-        scale: {
-            value: 0.5,
-            steps: 0.1
-        }
-    })
+    // const { position, rotation, scale } = useControls({
+    //     position: {
+    //         value: {
+    //             x: 1.4,
+    //             y: 2,
+    //             z: -2.4
+    //         },
+    //         min: -10,
+    //         max: 10,
+    //         steps: 0.1,
+    //         joystick: 'invertY'
+    //     },
+    //     rotation: {
+    //         value: {
+    //             x: 0,
+    //             y: 0,
+    //             z: 0
+    //         },
+    //         min: -10,
+    //         max: 10,
+    //         steps: 0.1,
+    //         joystick: 'invertY'
+    //     },
+    //     scale: {
+    //         value: 0.5,
+    //         steps: 0.1
+    //     }
+    // })
     
     const [zoom, setZoom] = React.useState(false)
-    const [camPosition, setCamPosition] = React.useState({x: 4.2, y: 1.4, z: 8})
-    const [camTarget, setCamTarget] = React.useState({ x: 6.6, y: 1.4, z: 0 });
+
+    const cameraConfig = {
+        position: {
+            one: { x: -2.5, y: 2.0, z: 6 },
+            two: { x: 1.2, y: 1.925, z: -1.9 }
+        },
+        target: {
+            one: { x: 4.6, y: 1.2, z: -1 },
+            two: { x: 1.2, y: 1.925, z: -2.4 }
+        }
+    }
+
+    const [camPosition, setCamPosition] = React.useState(cameraConfig.position.one)
+    const [camTarget, setCamTarget] = React.useState(cameraConfig.target.one);
+    // const presentationRotation = [0.23, 0.5, 0.1]
+    const presentationRotation = {x: 0, y: 0.2, z: 0 }
 
     const linkedInUrl = "https://www.linkedin.com/in/kendrickdrews/";
     const githubUrl = "https://github.com/KendrickDrews"
 
-   
-    const computerPosition = {x: -0.5, y: - 1.2, z: - 1.2}
-    const zoomButtonConfig = { pos: { x: 0.6, y: 2.2, z: -2.6 }, rotation: { x: 0.0, y: -0.2, z: 0 } }
-    const resumeConfig = { pos: { x: 1.803, y: 1.92, z: -2.4 }, rotation: { x: 0.0, y: -0.2, z: 0 }, scale: 0.391 }
-    
+
+    const zoomButtonConfig = { pos: { x: 0.7, y: 2.362, z: -2.6 }, rotation: { x: 0.0, y: -0.2, z: 0 } }
+    const resumeConfig = { pos: { x: 1.803, y: 1.92, z: -2.355 }, rotation: { x: 0.0, y: -0.2, z: 0 }, scale: 0.391 }
 
     const computerRef = React.useRef<any>()
 
-    const cam = useThree((state) => state.camera)
-    console.log(cam)
+    const cam = useThree((state) => state.camera) 
+
     function focusScreen() {
 
         if (zoom) {
             
-            setCamTarget({ x: 6.6, y: 1.4, z: 0 })
-            setCamPosition({ x: 4.2, y: 1.4, z: 8 })
+            setCamTarget(cameraConfig.target.one)
+            setCamPosition(cameraConfig.position.one)
             
             cam.updateProjectionMatrix()
             setZoom(!zoom);
+
         }
         else {
-            setCamTarget({ x: 1.6, y: 2.0, z: -2.0 })
-            setCamPosition({ x: 1.6, y: 2.0, z: -1 })
+
+            setCamTarget(cameraConfig.target.two)
+            setCamPosition(cameraConfig.position.two)
             
-            // cam.position.set(1.3, 1.8, -1)
             cam.updateProjectionMatrix()
             setZoom(!zoom);
+            
         }
     }
 
@@ -92,7 +106,7 @@ export default function Experience() {
         <CameraController position={camPosition} target={camTarget} />
         <PresentationControls 
             global 
-            rotation={ [0.13, 0.5, 0] }
+            rotation={ [ presentationRotation.x, presentationRotation.y, presentationRotation.z ] }
             polar={ [ -1, 1] }
             azimuth={ [ -2, 1] }
             // config={ { mass: 2, tension: 200 } }
@@ -102,10 +116,10 @@ export default function Experience() {
                 <group position={[0,0,0]}>
 
                 <DesktopScene />
-                <mesh visible scale={0.2}  position={[position.x, position.y, position.z]} >
+                {/* <mesh visible scale={0.2}  position={[position.x, position.y, position.z]} >
                   <sphereGeometry args={[1, 16, 16]} />
                   <meshStandardMaterial color="#FFFFED" transparent />
-                </mesh>
+                </mesh> */}
                 <Html
                     ref={computerRef}
                     transform
@@ -123,7 +137,7 @@ export default function Experience() {
                 {/* Zoom Button */}
                 <Html
                     transform
-                    // occlude="blending"
+                    occlude="blending"
                     wrapperClass='floatingButton'
                     distanceFactor={ zoom ? 2.0 : 3.25 }
                     position={[zoomButtonConfig.pos.x, zoomButtonConfig.pos.y, zoomButtonConfig.pos.z]}
@@ -141,7 +155,7 @@ export default function Experience() {
                 </group>
                 <Html 
                     transform
-                    // occlude="blending"
+                    occlude="blending"
                     wrapperClass="personal-banner"
                     position={ [ 4.4, 2.4, 4.4 ] }
                     rotation-y={-1.6}
