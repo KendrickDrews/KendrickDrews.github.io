@@ -5,7 +5,7 @@ import { Button, Tooltip  } from 'antd'
 import Resume from './Resume'
 import { useFrame, useThree } from '@react-three/fiber'
 // import { useControls } from 'leva'
-import { ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
+import { GithubOutlined, LinkedinOutlined, ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
 import DesktopScene from './DesktopScene'
 import { useControls } from 'leva'
 import { CameraController } from './CameraController'
@@ -63,8 +63,8 @@ export default function Experience() {
     const githubUrl = "https://github.com/KendrickDrews"
 
 
-    const zoomButtonConfig = { pos: { x: 0.7, y: 2.362, z: -2.6 }, rotation: { x: 0.0, y: -0.2, z: 0 } }
-    const resumeConfig = { pos: { x: 1.803, y: 1.92, z: -2.355 }, rotation: { x: 0.0, y: -0.2, z: 0 }, scale: 0.391 }
+    const zoomButtonConfig = { position: { x: 0.7, y: 2.362, z: -2.6 }, rotation: { x: 0.0, y: -0.2, z: 0 } }
+    const resumeConfig = { position: { x: 1.803, y: 1.92, z: -2.355 }, rotation: { x: 0.0, y: -0.2, z: 0 }, scale: 0.391 }
 
     const computerRef = React.useRef<any>()
 
@@ -73,18 +73,18 @@ export default function Experience() {
     function focusScreen() {
 
         if (zoom) {
-            
-            setCamTarget(cameraConfig.target.one)
             setCamPosition(cameraConfig.position.one)
+            setCamTarget(cameraConfig.target.one)
+            
             
             cam.updateProjectionMatrix()
             setZoom(!zoom);
 
         }
         else {
-
-            setCamTarget(cameraConfig.target.two)
             setCamPosition(cameraConfig.position.two)
+            setCamTarget(cameraConfig.target.two)
+            
             
             cam.updateProjectionMatrix()
             setZoom(!zoom);
@@ -126,7 +126,7 @@ export default function Experience() {
                     occlude="blending"
                     wrapperClass="htmlScreen"
                     distanceFactor={ resumeConfig.scale }
-                    position={[resumeConfig.pos.x, resumeConfig.pos.y, resumeConfig.pos.z]}
+                    position={[resumeConfig.position.x, resumeConfig.position.y, resumeConfig.position.z]}
                     rotation={[resumeConfig.rotation.x, resumeConfig.rotation.y, resumeConfig.rotation.z]}
                     zIndexRange={ [100,0] }
                 > 
@@ -140,7 +140,7 @@ export default function Experience() {
                     occlude="blending"
                     wrapperClass='floatingButton'
                     distanceFactor={ zoom ? 2.0 : 3.25 }
-                    position={[zoomButtonConfig.pos.x, zoomButtonConfig.pos.y, zoomButtonConfig.pos.z]}
+                    position={[zoomButtonConfig.position.x, zoomButtonConfig.position.y, zoomButtonConfig.position.z]}
                     rotation={[zoomButtonConfig.rotation.x, zoomButtonConfig.rotation.y, zoomButtonConfig.rotation.z]}
                     zIndexRange={ [100,0] }
                 >
@@ -156,14 +156,19 @@ export default function Experience() {
                 <Html 
                     transform
                     occlude="blending"
+                    style={
+                        {
+                            opacity: 0.5
+                        }
+                    }
                     wrapperClass="personal-banner"
                     position={ [ 4.4, 2.4, 4.4 ] }
                     rotation-y={-1.6}
                 >
                     <h1> Kendrick Drews </h1>
                     <h3> Front End Developer / UI / UX </h3>
-                    <a href={linkedInUrl} target='_blank'>LinkedIn </a>
-                    <a href={githubUrl} target='_blank'> Github </a>
+                    <a href={linkedInUrl} target='_blank'> <LinkedinOutlined /> LinkedIn </a>
+                    <a href={githubUrl} target='_blank'> <GithubOutlined /> Github </a>
                     <button> View Resume </button>
                 </Html>
         </PresentationControls>

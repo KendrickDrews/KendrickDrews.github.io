@@ -1,6 +1,11 @@
 * {
   touch-action: none;
 }
+
+body {
+  font-size: 100%;
+}
+
 #canvas-container {
   width: 100%;
   margin: 0 auto;
@@ -8,18 +13,25 @@
   display:flex;
   justify-content: center;
 }
+
 canvas {
   touch-action: none;
 }
+
 .center-text {
   text-align: center;
 }
+.htmlScreen {
+  background-color: transparent;
+}
+
 .htmlScreen > div:nth-child(-n + 3) {
   width: 1920px;
   height: 1080px;
   border: none;
   touch-action: none;
 }
+
 .resume-container {
   overflow-y: scroll;
   display: flex;
@@ -31,15 +43,36 @@ canvas {
   color:black;
   box-sizing: border-box;
   padding: 28px;
+  font-size: 24px;
 }
+
 .resume-container h1 {
-  font-size: 64px;
+  font-size: 128px;
   margin: 0;
 }
+
 .resume-container h2, .resume-container h3, .resume-container h4 {
   margin: 0;
 }
+.resume-container h2 {
+  font-size: 48px;
+}
+
+.resume-container h3 {
+  font-size: 36px;
+}
+.resume-container p {
+  font-size: 24px;
+}
+.resume-title {
+  padding-left: 10px;
+  margin-top: -35px!important;
+}
+
 .job-tech-stack li {
-  font-size: 12px;
+  font-size: 18px;
   color: #8d8d8d;
+}
+.job-meta p {
+  margin: 0;
 }

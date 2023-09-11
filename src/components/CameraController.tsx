@@ -55,6 +55,7 @@ const CameraController = ({ position, target }: Props) => {
     <OrbitControls
       ref={ref}
       args={[camera, domElement]}
+      enableZoom={ false }
       panSpeed={1}
       maxPolarAngle={Math.PI / 2}
     />
