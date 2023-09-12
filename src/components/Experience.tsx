@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
-import { Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera, Circle, Text  } from '@react-three/drei'
+import { Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera, Circle, Text, useMask  } from '@react-three/drei'
 import { Button, Tooltip  } from 'antd'
 import Resume from './Resume'
-import { useFrame, useThree } from '@react-three/fiber'
+import { useFrame, useThree, extend } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
 // import { useControls } from 'leva'
 import { GithubOutlined, LinkedinOutlined, ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
 import DesktopScene from './DesktopScene'
 import { useControls } from 'leva'
 import { CameraController } from './CameraController'
+import { invert } from 'three/examples/jsm/nodes/Nodes.js'
 
 export default function Experience() {
 
@@ -66,39 +67,40 @@ export default function Experience() {
 
 
     const zoomButtonConfig = { position: { x: 0.7, y: 2.362, z: -2.6 }, rotation: { x: 0.0, y: -0.2, z: 0 } }
-    const resumeConfig = { position: { x: 1.798, y: 1.92, z: -2.355 }, rotation: { x: 0.0, y: -0.2, z: 0 }, scale: 0.391 }
+    const resumeConfig = { position: { x: 1.792, y: 1.92, z: -2.355 }, rotation: { x: 0.0, y: -0.2, z: 0 }, scale: 0.378 }
 
     const cam = useThree((state) => state.camera) 
-    const { scale } = useSpring({ scale: zoom ? 0.175 : 0.35, config: { duration: 1650 } })
+    const { scale } = useSpring({ scale: zoom ? 0.175 : 0.35, config: { duration: 1650, tension: 120, friction: 14 } })
 
     function focusScreen() {
 
         if (zoom) {
+
             setCamPosition(cameraConfig.position.one)
             setCamTarget(cameraConfig.target.one)
             
-            
             cam.updateProjectionMatrix()
             setZoom(!zoom);
-
         }
         else {
+            
             setCamPosition(cameraConfig.position.two)
             setCamTarget(cameraConfig.target.two)
-            
             
             cam.updateProjectionMatrix()
             setZoom(!zoom);
             
         }
     }
+    const stencil = useMask(1)
 
     return <>
 
         <Environment preset="city" />
         {/* color: '#241a1a'2b0717 */}
-        <color args={ [ '#241a1a' ] } attach="background" />
+        <color args={ [ '#e0b7ff' ] } attach="background" />
         <CameraController position={camPosition} target={camTarget} />
+
         <PresentationControls 
             global 
             rotation={ [ presentationRotation.x, presentationRotation.y, presentationRotation.z ] }
@@ -110,53 +112,45 @@ export default function Experience() {
                 {/* Light from Computer */}
                 <group position={[0,0,0]}>
 
-                <DesktopScene />
-                {/* <mesh visible scale={0.2}  position={[position.x, position.y, position.z]} >
-                  <sphereGeometry args={[1, 16, 16]} />
-                  <meshStandardMaterial color="#FFFFED" transparent />
-                </mesh> */}
-                <Html
-                    transform
-                    occlude="blending"
-                    wrapperClass="htmlScreen"
-                    distanceFactor={ resumeConfig.scale }
-                    position={[resumeConfig.position.x, resumeConfig.position.y, resumeConfig.position.z]}
-                    rotation={[resumeConfig.rotation.x, resumeConfig.rotation.y, resumeConfig.rotation.z]}
-                    zIndexRange={ [100,0] }
-                > 
-                    <Resume />
-                        
-                </Html>
-                    
-                {/* Zoom Button */}
-                <animated.group 
-                    scale={scale}
-                    position={[zoomButtonConfig.position.x, zoomButtonConfig.position.y, zoomButtonConfig.position.z]}
-                    rotation={[zoomButtonConfig.rotation.x, zoomButtonConfig.rotation.y, zoomButtonConfig.rotation.z]}
-                >
+                    <DesktopScene />
+
                     <Html
                         transform
                         occlude="blending"
-                        wrapperClass='floatingButton'
-                        // distanceFactor={ distanceFactor }
-                        // position={[zoomButtonConfig.position.x, zoomButtonConfig.position.y, zoomButtonConfig.position.z]}
-                        // rotation={[zoomButtonConfig.rotation.x, zoomButtonConfig.rotation.y, zoomButtonConfig.rotation.z]}
+                        wrapperClass="htmlScreen"
+                        distanceFactor={ resumeConfig.scale }
+                        position={[resumeConfig.position.x, resumeConfig.position.y, resumeConfig.position.z]}
+                        rotation={[resumeConfig.rotation.x, resumeConfig.rotation.y, resumeConfig.rotation.z]}
                         zIndexRange={ [100,0] }
-                        // geometry={
-                        //     <Circle args={[ 0.25]}  > <meshStandardMaterial  opacity={0.25}  /> </Circle>
-                        //   }
-                    >
-                        <Tooltip title={zoom ? "Zoom Out" : "Zoom In"}>
-                            <Button 
-                                shape="circle"
-                                onClick={() => focusScreen()}
-                                icon={zoom ? <ZoomOutOutlined /> : <ZoomInOutlined />}
-
-                            />
-                        </Tooltip>
+                    > 
+                        <Resume />
                     </Html>
-                </animated.group>
+                    
                 </group>
+
+                    {/* Zoom Button */}
+                    <animated.group 
+                        scale={scale}
+                        position={[zoomButtonConfig.position.x, zoomButtonConfig.position.y, zoomButtonConfig.position.z]}
+                        rotation={[zoomButtonConfig.rotation.x, zoomButtonConfig.rotation.y, zoomButtonConfig.rotation.z]}
+                    >
+                            <Html
+                                transform
+                                occlude="blending"
+                                wrapperClass='floatingButton'
+                                zIndexRange={ [100,2] }
+                            >
+                                <Tooltip title={zoom ? "Zoom Out" : "Zoom In"}>
+                                    <Button 
+                                        shape="circle"
+                                        onClick={() => focusScreen()}
+                                        icon={zoom ? <ZoomOutOutlined /> : <ZoomInOutlined />}
+                                    />
+                                </Tooltip>
+                            </Html>
+                        
+                    </animated.group>
+
                 <group position={[ 4.4, 2.4, 4.4 ]} rotation-y={-1.6}>
                     <Text position={[1,1,0]} color={"white"}>
                         Kendrick Drews
@@ -190,3 +184,4 @@ export default function Experience() {
         
     </>
 }
+

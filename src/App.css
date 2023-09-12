@@ -35,6 +35,7 @@ canvas {
 
 .resume-container {
   overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   width: 1920px;
@@ -87,4 +88,7 @@ canvas {
 }
 .job-meta p {
   margin: 0;
+}
+.ant-btn-circle {
+  border-radius: unset!important;
 }
