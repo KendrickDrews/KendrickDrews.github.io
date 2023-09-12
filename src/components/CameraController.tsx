@@ -22,6 +22,7 @@ const CameraController = ({ position, target }: Props) => {
   const ref = useRef<any>(null);
 
   camera.up = new Vector3(0, 1, 0);
+
   function cameraAnimate(): void {
     if (ref.current) {
       gsap.timeline().to(camera.position, {
@@ -30,7 +31,7 @@ const CameraController = ({ position, target }: Props) => {
         x: position.x,
         y: position.y,
         z: position.z,
-        ease: "power3.inOut",
+        ease: "power3.inOut"
       });
 
       gsap.timeline().to(
@@ -41,10 +42,8 @@ const CameraController = ({ position, target }: Props) => {
           x: target.x,
           y: target.y,
           z: target.z,
-          ease: "power3.inOut",
-        },
-        "<"
-      );
+          ease: "power3.inOut"
+        });
     }
   }
 

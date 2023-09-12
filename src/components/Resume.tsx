@@ -16,8 +16,8 @@ export default function Resume() {
                     <Row><h3 className="resume-title"> <i> Front End Developer / UI / UX </i> </h3></Row>
                 </Col> 
             </Row>
-            <Divider/>
-            <Row  align="middle" justify="center"> 
+            <Divider />
+            <Row align="middle" justify="center"> 
                 <Col span={7} pull={1}>
                     <Row justify='end'>
                         <h2> Contact </h2>
@@ -31,8 +31,8 @@ export default function Resume() {
                     </Row>
                 </Col> 
             </Row>
-            <Divider/>
-            <Row  align="middle" justify="center"> 
+            <Divider />
+            <Row align="middle" justify="center"> 
                 <Col span={7} pull={1}>
                     <Row justify='end'>
                         <h2> Work Experience </h2>
@@ -40,7 +40,7 @@ export default function Resume() {
                 </Col> 
                 <Col span={16} />
             </Row>
-            <Row  align="top" justify="center"> 
+            <Row align="top" justify="center"> 
                 <Col className='job-meta' span={jobMetaOffset.span}>
                         <Row justify="end"> <p>03/19 - Now </p></Row>
                         <Row justify="end"> <p>NU Borders </p></Row>
@@ -60,7 +60,7 @@ export default function Resume() {
                         </Row>
                 </Col> 
             </Row>
-            <Row  align="top" justify="center"> 
+            <Row align="top" justify="center"> 
                 <Col className='job-meta' span={jobMetaOffset.span}>
                         <Row justify="end"> <p>04/18 - 02/19 </p></Row>
                         <Row justify="end"> <p>Amida </p></Row>
@@ -74,15 +74,15 @@ export default function Resume() {
                         </Row>
                         <Row > 
                             <ul className='job-tech-stack'>
-                                <li>Next.js, React, Python, Redux, eslint, Jest, Cypress, Playwright, webpack, Parcel, TypeScript, JavaScript </li>
-                                <li>Node.js, Express, ElasticSearch, Kibana, Spark, Java/Scala/Kotlin, Rust, Docker, Kubernetes, saltstack</li>
-                                <li>AWS, EC2, Mongo, PostgresSQL, Lambda, ECS, EMR, Terraform, GitHub, BitBucket, Jenkins, blockchain</li>
-                                <li>Jira, Confluence, ZenHub, Scaled Agile, Kanban, Microservices, Microfrontends, InnerSource</li>
+                                <li>GraphQL, Design Thinking, User Interviews, Next.js,  </li>
+                                <li>Node.js, Express, ElasticSearch, Docker, Kubernetes, saltstack</li>
+                                <li>React, Python, Redux, eslint, Jest, Cypress, webpack, JavaScript</li>
+                                <li>Jira, Confluence, Scaled Agile, Microfrontends, Wordpress</li>
                             </ul> 
                         </Row>
                 </Col> 
             </Row>
-            <Row  align="top" justify="center"> 
+            <Row align="top" justify="center"> 
                 <Col className='job-meta' span={jobMetaOffset.span}>
                         <Row justify="end"><p> 01/16 - 03/18 </p></Row>
                         <Row justify="end"><p> TRI </p></Row>
@@ -100,7 +100,7 @@ export default function Resume() {
                         </Row>
                 </Col> 
             </Row>
-            <Row  align="top" justify="center"> 
+            <Row align="top" justify="center"> 
                 <Col className='job-meta' span={jobMetaOffset.span}>
                         <Row justify="end"> <p>01/14 - 01/16 </p></Row>
                         <Row justify="end"> <p>The INCLab </p></Row>
@@ -119,7 +119,7 @@ export default function Resume() {
                 </Col> 
             </Row>
             <Divider/>
-            <Row  align="top"> 
+            <Row align="top" justify="center"> 
                 <Col span={7} pull={1}>
                     <Row justify='end'>
                         <h2> Education </h2>
@@ -128,11 +128,11 @@ export default function Resume() {
                 <Col span={16} push={1}> 
                     <Row><h2> Bachelors of Fine-Arts </h2></Row>
                     <Row><h3> Virginia Commonwealth University, Richmond, VA </h3></Row>
-                    <Row><h4> <i>2009 - 2013</i> </h4></Row>
+                    <Row className="job-meta"><p> <i>2009 - 2013</i> </p></Row>
                 </Col> 
             </Row>
             <Divider/>
-            <Row  align="top"> 
+            <Row align="top" justify="center"> 
                 <Col span={7} pull={1}>
                     <Row justify='end'>
                         <h2> Skills </h2>
@@ -141,7 +141,7 @@ export default function Resume() {
                 <Col span={16} push={1}> 
                 <Row>
                     <Col flex={1}>
-                        <ul>
+                        <ul className="resume-skills">
                             <li>React</li> 
                             <li>Node</li> 
                             <li>Redux</li> 
@@ -152,22 +152,26 @@ export default function Resume() {
                             <li>Next.js</li>
                             <li>CSS</li> 
                             <li>SCSS</li> 
-                            <li>Ant Design</li>
+                            <li>Ant Design</li> 
+                        </ul>
+                     </Col>
+                     <Col flex={1}>
+                        <ul className="resume-skills">
                             <li>prettier</li> 
                             <li>ESLint</li> 
                             <li>AWS</li> 
                             <li>Docker</li> 
                             <li>postman</li> 
                             <li>Yarn</li>  
-                        </ul>
-                     </Col>
-                    <Col flex={1}>
-                        <ul>
                             <li>NPM</li>
                             <li>MySQL</li> 
                             <li>Confluence</li> 
                             <li>Jira</li> 
                             <li>GIT</li> 
+                        </ul>
+                     </Col>
+                    <Col flex={1}>
+                        <ul className="resume-skills">
                             <li>GitLab</li> 
                             <li>Jenkins</li> 
                             <li>Agile</li> 
@@ -176,8 +180,7 @@ export default function Resume() {
                             <li>SCRUM Master</li> 
                             <li>Figma</li> 
                             <li>Photoshop</li> 
-                            <li>Sketch</li> 
-                            <li>InVision</li> 
+                            <li>Sketch</li>
                             <li>Adobe XD</li> 
                             <li>Sharepoint</li>
                         </ul> 

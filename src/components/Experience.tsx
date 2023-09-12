@@ -1,6 +1,6 @@
 import React from 'react'
 import * as THREE from 'three'
-import { Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera,  } from '@react-three/drei'
+import { Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera, Circle, Text  } from '@react-three/drei'
 import { Button, Tooltip  } from 'antd'
 import Resume from './Resume'
 import { useFrame, useThree } from '@react-three/fiber'
@@ -56,15 +56,19 @@ export default function Experience() {
 
     const [camPosition, setCamPosition] = React.useState(cameraConfig.position.one)
     const [camTarget, setCamTarget] = React.useState(cameraConfig.target.one);
+    const defaultPresentationRotation = {x: 0, y: 0.2, z: 0 }
+    const[ presentationRotation, setPresentationRotation] = React.useState(defaultPresentationRotation)
+
+
     // const presentationRotation = [0.23, 0.5, 0.1]
-    const presentationRotation = {x: 0, y: 0.2, z: 0 }
+    
 
     const linkedInUrl = "https://www.linkedin.com/in/kendrickdrews/";
     const githubUrl = "https://github.com/KendrickDrews"
 
 
     const zoomButtonConfig = { position: { x: 0.7, y: 2.362, z: -2.6 }, rotation: { x: 0.0, y: -0.2, z: 0 } }
-    const resumeConfig = { position: { x: 1.803, y: 1.92, z: -2.355 }, rotation: { x: 0.0, y: -0.2, z: 0 }, scale: 0.391 }
+    const resumeConfig = { position: { x: 1.798, y: 1.92, z: -2.355 }, rotation: { x: 0.0, y: -0.2, z: 0 }, scale: 0.391 }
 
     const computerRef = React.useRef<any>()
 
@@ -72,7 +76,12 @@ export default function Experience() {
 
     function focusScreen() {
 
+        // if (presentationRotation !== defaultPresentationRotation) {
+            
+        // }
+
         if (zoom) {
+            setPresentationRotation(defaultPresentationRotation)
             setCamPosition(cameraConfig.position.one)
             setCamTarget(cameraConfig.target.one)
             
@@ -82,6 +91,7 @@ export default function Experience() {
 
         }
         else {
+            setPresentationRotation(defaultPresentationRotation)
             setCamPosition(cameraConfig.position.two)
             setCamTarget(cameraConfig.target.two)
             
@@ -95,14 +105,8 @@ export default function Experience() {
     return <>
 
         <Environment preset="city" />
-
+        {/* color: '#241a1a'2b0717 */}
         <color args={ [ '#241a1a' ] } attach="background" />
-        {/* <PerspectiveCamera 
-            makeDefault 
-            ref={cameraRef}
-            position={[1.4, 1.9, 8]}
-            rotation={[0, -0.2, 0]}
-        /> */}
         <CameraController position={camPosition} target={camTarget} />
         <PresentationControls 
             global 
@@ -143,24 +147,31 @@ export default function Experience() {
                     position={[zoomButtonConfig.position.x, zoomButtonConfig.position.y, zoomButtonConfig.position.z]}
                     rotation={[zoomButtonConfig.rotation.x, zoomButtonConfig.rotation.y, zoomButtonConfig.rotation.z]}
                     zIndexRange={ [100,0] }
+                    // geometry={
+                    //     <Circle args={[ 0.25]}  > <meshStandardMaterial  opacity={0.25}  /> </Circle>
+                    //   }
                 >
                     <Tooltip title={zoom ? "Zoom Out" : "Zoom In"}>
                         <Button 
                             shape="circle"
                             onClick={() => focusScreen()}
                             icon={zoom ? <ZoomOutOutlined /> : <ZoomInOutlined />}
+                            
                         />
                     </Tooltip>
                 </Html>
                 </group>
-                <Html 
+                <group position={[ 4.4, 2.4, 4.4 ]} rotation-y={-1.6}>
+                    <Text position={[1,1,0]} color={"white"}>
+                        Kendrick Drews
+                    </Text>
+                    <Text color={"white"}>
+                        Front End Developer / UI / UX
+                    </Text>
+                </group>
+                {/* <Html 
                     transform
                     occlude="blending"
-                    style={
-                        {
-                            opacity: 0.5
-                        }
-                    }
                     wrapperClass="personal-banner"
                     position={ [ 4.4, 2.4, 4.4 ] }
                     rotation-y={-1.6}
@@ -170,7 +181,7 @@ export default function Experience() {
                     <a href={linkedInUrl} target='_blank'> <LinkedinOutlined /> LinkedIn </a>
                     <a href={githubUrl} target='_blank'> <GithubOutlined /> Github </a>
                     <button> View Resume </button>
-                </Html>
+                </Html> */}
         </PresentationControls>
 
         {/* <ContactShadows 
