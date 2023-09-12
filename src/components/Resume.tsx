@@ -18,11 +18,13 @@ export default function Resume() {
             </Row>
             <Divider />
             <Row align="middle" justify="center"> 
-                <Col span={7} pull={1}>
+                <Col span={7} >
                     <Row justify='end'>
                         <h2> Contact </h2>
                     </Row>
                 </Col> 
+                
+                <Col span={jobMetaOffset.gap}> </Col> 
                 <Col span={16}> 
                     <Row justify="space-between" align="middle">
                         <Col span={8} className="center-text"> <p> <PhoneTwoTone /> 571 294 5260 </p> </Col>
@@ -33,11 +35,13 @@ export default function Resume() {
             </Row>
             <Divider />
             <Row align="middle" justify="center"> 
-                <Col span={7} pull={1}>
+                <Col span={7} >
                     <Row justify='end'>
                         <h2> Work Experience </h2>
                     </Row>
                 </Col> 
+                
+                <Col span={jobMetaOffset.gap}> </Col> 
                 <Col span={16} />
             </Row>
             <Row align="top" justify="center"> 
@@ -120,12 +124,14 @@ export default function Resume() {
             </Row>
             <Divider/>
             <Row align="top" justify="center"> 
-                <Col span={7} pull={1}>
+                <Col span={7}>
                     <Row justify='end'>
                         <h2> Education </h2>
                     </Row>
                 </Col> 
-                <Col span={16} push={1}> 
+                
+                <Col span={jobMetaOffset.gap}> </Col> 
+                <Col span={16} > 
                     <Row><h2> Bachelors of Fine-Arts </h2></Row>
                     <Row><h3> Virginia Commonwealth University, Richmond, VA </h3></Row>
                     <Row className="job-meta"><p> <i>2009 - 2013</i> </p></Row>
@@ -133,12 +139,14 @@ export default function Resume() {
             </Row>
             <Divider/>
             <Row align="top" justify="center"> 
-                <Col span={7} pull={1}>
+                <Col span={7}>
                     <Row justify='end'>
                         <h2> Skills </h2>
                     </Row>
                 </Col> 
-                <Col span={16} push={1}> 
+                
+                <Col span={jobMetaOffset.gap}> </Col> 
+                <Col span={16} > 
                 <Row>
                     <Col flex={1}>
                         <ul className="resume-skills">
