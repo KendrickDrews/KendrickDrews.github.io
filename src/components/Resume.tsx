@@ -46,17 +46,36 @@ export default function Resume() {
             </Row>
             <Row align="top" justify="center"> 
                 <Col className='job-meta' span={jobMetaOffset.span}>
-                        <Row justify="end"> <p>03/19 - Now </p></Row>
-                        <Row justify="end"> <p>NU Borders </p></Row>
-                        <Row justify="end"> <p>Reston VA / Remote </p></Row>
+                        <Row justify="end"> <p> 07/22 - now </p></Row>
+                        <Row justify="end"> <p> Freelance Contracting </p></Row>
+                        <Row justify="end"> <p> Howell, MI / Remote </p></Row>
+                </Col> 
+                <Col span={jobMetaOffset.gap}> </Col> 
+                <Col span={16}> 
+                        <Row > <h3>Front End / Fullstack Developer</h3> </Row>
+                        <Row ><p> Handling all verbal and written communications between hosting companies, clients, and vendors. Designing, coding  CSS, React, and Typescript. Preparing multiple designs and wireframes for clients approval before proceeding with development. </p></Row>
+                        <Row > 
+                            <ul className='job-tech-stack'>
+                                <li>Next.js, React, Redux, eslint, Jest, Cypress, webpack,  </li>
+                                <li>Node.js, Express, Docker, AWS, Jira, Confluence,</li>
+                                <li>AWS, EC2, Mongo, GitHub,Jenkins, TypeScript, JavaScript</li>
+                            </ul> 
+                        </Row>
+                </Col> 
+            </Row>
+            <Row align="top" justify="center"> 
+                <Col className='job-meta' span={jobMetaOffset.span}>
+                        <Row justify="end"> <p> 03/19 - 07/22 </p></Row>
+                        <Row justify="end"> <p> NU Borders </p></Row>
+                        <Row justify="end"> <p> Reston VA / Remote </p></Row>
                 </Col> 
                 <Col span={jobMetaOffset.gap}> </Col> 
                 <Col span={16}> 
                         <Row > <h3>Senior Front End Developer</h3> </Row>
-                        <Row ><p> Developed React applications with Node backends for the Defense Intelligence Agency and United States Department of State. Responsible for Front End Architecture. Worked across teams to develop microservices. Produced data-visualizations and quarterly reports. </p></Row>
+                        <Row ><p>Developed React applications with Node backends for the Defense Intelligence Agency and United States Department of State. Responsible for Front End Architecture. Worked across teams to develop microservices. Produced data-visualizations and quarterly reports. </p></Row>
                         <Row > 
                             <ul className='job-tech-stack'>
-                                <li> Next.js, React, Svelte, Redux, eslint, Jest, Cypress, Playwright, webpack, Parcel, TypeScript, JavaScript </li>
+                                <li>Next.js, React, Svelte, Redux, eslint, Jest, Cypress, Playwright, webpack, Parcel, TypeScript, JavaScript </li>
                                 <li>Node.js, Express, ElasticSearch, Kibana, Spark, Java/Scala/Kotlin, Rust, Docker, Kubernetes, saltstack</li>
                                 <li>AWS, EC2, Mongo, PostgresSQL, Lambda, ECS, EMR, Terraform, GitHub, BitBucket, Jenkins, blockchain</li>
                                 <li>Jira, Confluence, ZenHub, Scaled Agile, Kanban, Microservices, Microfrontends, InnerSource</li>
@@ -66,9 +85,9 @@ export default function Resume() {
             </Row>
             <Row align="top" justify="center"> 
                 <Col className='job-meta' span={jobMetaOffset.span}>
-                        <Row justify="end"> <p>04/18 - 02/19 </p></Row>
-                        <Row justify="end"> <p>Amida </p></Row>
-                        <Row justify="end"> <p>Washington DC </p></Row>
+                        <Row justify="end"> <p> 04/18 - 02/19 </p></Row>
+                        <Row justify="end"> <p> Amida </p></Row>
+                        <Row justify="end"> <p> Washington DC </p></Row>
                 </Col> 
                 
                 <Col span={jobMetaOffset.gap}> </Col>
@@ -106,9 +125,9 @@ export default function Resume() {
             </Row>
             <Row align="top" justify="center"> 
                 <Col className='job-meta' span={jobMetaOffset.span}>
-                        <Row justify="end"> <p>01/14 - 01/16 </p></Row>
-                        <Row justify="end"> <p>The INCLab </p></Row>
-                        <Row justify="end"> <p>Tysons Corner, VA </p></Row>
+                        <Row justify="end"> <p> 01/14 - 01/16 </p></Row>
+                        <Row justify="end"> <p> The INCLab </p></Row>
+                        <Row justify="end"> <p> Tysons Corner, VA </p></Row>
                 </Col> 
                 
                 <Col span={jobMetaOffset.gap}> </Col>
