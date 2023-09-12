@@ -95,14 +95,14 @@ export default function Experience() {
             
         }
     }
-    const stencil = useMask(1)
+    const bgColor = 'lightpink'
 
     return <>
 
         <Environment preset="city" />
         {/* color: '#241a1a'2b0717 */}
-        <color args={ [ '#e0b7ff' ] } attach="background" />
-        <fog attach="fog" near={15} far={20} args={['#e0b7ff', 60, 100]} />
+        <color args={ [ bgColor ] } attach="background" />
+        <fog attach="fog" near={12} far={25} args={[bgColor, 30, 100]} />
         <CameraController position={camPosition} target={camTarget} />
 
         <PresentationControls 
@@ -113,10 +113,9 @@ export default function Experience() {
             config={ { mass: 2, tension: 200 } }
             snap={{ mass: 4, tension: 200 } }
         >
-            {/* <Plane args={[5,5]}/> */}
             <group position={[0,0,0]}>
-            <Plane args={[250,250]} position={[0,-2.5,0]} rotation={[-1.5707,0,0]}>
-                <meshStandardMaterial color="hotpink" />
+            <Plane  args={[250,250]} position={[0,-2.18,0]} rotation={[-1.5707,0,0]}>
+                <meshBasicMaterial color="#eaa0f2" />
             </Plane>
                 
                 <DesktopScene />
@@ -188,16 +187,6 @@ export default function Experience() {
                 
                 </group>
             </group>
-
-                {/* <Html 
-                    transform
-                    occlude="blending"
-                    wrapperClass="personal-banner"
-                >
-                    <a href={linkedInUrl} target='_blank'> <LinkedinOutlined /> LinkedIn </a>
-                    <a href={githubUrl} target='_blank'> <GithubOutlined /> Github </a>
-                    <button> <DoubleLeftOutlined /> View Resume </button>
-                </Html> */}
         </PresentationControls>
 
         {/* <ContactShadows 
