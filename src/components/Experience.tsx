@@ -74,11 +74,10 @@ export default function Experience() {
 
     const cam = useThree((state) => state.camera) 
 
+
     function focusScreen() {
 
-        // if (presentationRotation !== defaultPresentationRotation) {
-            
-        // }
+        
 
         if (zoom) {
             setPresentationRotation(defaultPresentationRotation)
@@ -113,8 +112,8 @@ export default function Experience() {
             rotation={ [ presentationRotation.x, presentationRotation.y, presentationRotation.z ] }
             polar={ [ -1, 1] }
             azimuth={ [ -2, 1] }
-            // config={ { mass: 2, tension: 200 } }
-            // snap={{ mass: 4, tension: 200 } }
+            config={ { mass: 2, tension: 200 } }
+            snap={{ mass: 4, tension: 200 } }
         >
                 {/* Light from Computer */}
                 <group position={[0,0,0]}>
