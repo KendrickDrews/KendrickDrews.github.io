@@ -1,16 +1,19 @@
 import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
-import { Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera, Circle, Text, useMask  } from '@react-three/drei'
+import { Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera, Circle, Text, useMask, Plane  } from '@react-three/drei'
 import { Button, Tooltip  } from 'antd'
 import Resume from './Resume'
 import { useFrame, useThree, extend } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
 // import { useControls } from 'leva'
-import { GithubOutlined, LinkedinOutlined, ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
+import { DoubleLeftOutlined, GithubOutlined, LinkedinOutlined, ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
 import DesktopScene from './DesktopScene'
 import { useControls } from 'leva'
 import { CameraController } from './CameraController'
 import { invert } from 'three/examples/jsm/nodes/Nodes.js'
+
+
+
 
 export default function Experience() {
 
@@ -83,7 +86,7 @@ export default function Experience() {
             setZoom(!zoom);
         }
         else {
-            
+
             setCamPosition(cameraConfig.position.two)
             setCamTarget(cameraConfig.target.two)
             
@@ -99,6 +102,7 @@ export default function Experience() {
         <Environment preset="city" />
         {/* color: '#241a1a'2b0717 */}
         <color args={ [ '#e0b7ff' ] } attach="background" />
+        <fog attach="fog" near={15} far={20} args={['#e0b7ff', 60, 100]} />
         <CameraController position={camPosition} target={camTarget} />
 
         <PresentationControls 
@@ -109,68 +113,90 @@ export default function Experience() {
             config={ { mass: 2, tension: 200 } }
             snap={{ mass: 4, tension: 200 } }
         >
-                {/* Light from Computer */}
-                <group position={[0,0,0]}>
-
-                    <DesktopScene />
-
-                    <Html
+            {/* <Plane args={[5,5]}/> */}
+            <group position={[0,0,0]}>
+            <Plane args={[250,250]} position={[0,-2.5,0]} rotation={[-1.5707,0,0]}>
+                <meshStandardMaterial color="hotpink" />
+            </Plane>
+                
+                <DesktopScene />
+                <Html
+                    transform
+                    occlude="blending"
+                    wrapperClass="htmlScreen"
+                    distanceFactor={ resumeConfig.scale }
+                    position={[resumeConfig.position.x, resumeConfig.position.y, resumeConfig.position.z]}
+                    rotation={[resumeConfig.rotation.x, resumeConfig.rotation.y, resumeConfig.rotation.z]}
+                    zIndexRange={ [100,0] }
+                > 
+                    <Resume />
+                </Html>
+                
+            </group>
+                {/* Zoom Button */}
+                <animated.group 
+                    scale={scale}
+                    position={[zoomButtonConfig.position.x, zoomButtonConfig.position.y, zoomButtonConfig.position.z]}
+                    rotation={[zoomButtonConfig.rotation.x, zoomButtonConfig.rotation.y, zoomButtonConfig.rotation.z]}
+                >
+                        <Html
+                            transform
+                            occlude="blending"
+                            wrapperClass='floatingButton'
+                            zIndexRange={ [100,2] }
+                        >
+                            <Button 
+                                shape="circle"
+                                onClick={() => focusScreen()}
+                                icon={zoom ? <ZoomOutOutlined /> : <ZoomInOutlined />}
+                            />
+                        </Html>
+                    
+                </animated.group>
+            <group position={[ 4.4, 2.4, 3.4 ]} rotation-y={-1.6}>
+                <Text position={[0,1,0]} color={"black"}>
+                    Kendrick Drews
+                </Text>
+                <Text position={[0, 0.25, 0]} color={"black"} scale={0.5}>
+                    Front End Developer / UI / UX
+                </Text>
+                <group position={[0.50,-0.5,0]}>
+                    <Html 
                         transform
                         occlude="blending"
-                        wrapperClass="htmlScreen"
-                        distanceFactor={ resumeConfig.scale }
-                        position={[resumeConfig.position.x, resumeConfig.position.y, resumeConfig.position.z]}
-                        rotation={[resumeConfig.rotation.x, resumeConfig.rotation.y, resumeConfig.rotation.z]}
-                        zIndexRange={ [100,0] }
-                    > 
-                        <Resume />
-                    </Html>
-                    
-                </group>
-
-                    {/* Zoom Button */}
-                    <animated.group 
-                        scale={scale}
-                        position={[zoomButtonConfig.position.x, zoomButtonConfig.position.y, zoomButtonConfig.position.z]}
-                        rotation={[zoomButtonConfig.rotation.x, zoomButtonConfig.rotation.y, zoomButtonConfig.rotation.z]}
+                        wrapperClass="banner-resume"
+                        position={[-3,0,0]}
                     >
-                            <Html
-                                transform
-                                occlude="blending"
-                                wrapperClass='floatingButton'
-                                zIndexRange={ [100,2] }
-                            >
-                                <Tooltip title={zoom ? "Zoom Out" : "Zoom In"}>
-                                    <Button 
-                                        shape="circle"
-                                        onClick={() => focusScreen()}
-                                        icon={zoom ? <ZoomOutOutlined /> : <ZoomInOutlined />}
-                                    />
-                                </Tooltip>
-                            </Html>
-                        
-                    </animated.group>
-
-                <group position={[ 4.4, 2.4, 4.4 ]} rotation-y={-1.6}>
-                    <Text position={[1,1,0]} color={"white"}>
-                        Kendrick Drews
-                    </Text>
-                    <Text color={"white"}>
-                        Front End Developer / UI / UX
-                    </Text>
+                        <Button type="primary" className="banner-btns" onClick={() => focusScreen()}> <DoubleLeftOutlined /> View Resume</Button>
+                    </Html>
+                    <Html 
+                        transform
+                        occlude="blending"
+                        wrapperClass="banner-resume"
+                        position={[0,0,0]}
+                    >
+                        <a href={linkedInUrl} target='_blank'><Button  className="banner-btns"  > <LinkedinOutlined />  LinkedIn  </Button></a>
+                    </Html>
+                    <Html 
+                        transform
+                        occlude="blending"
+                        wrapperClass="banner-resume"
+                        position={[2.5,0,0]}
+                    >
+                        <a href={githubUrl} target='_blank'><Button  className="banner-btns"  > <GithubOutlined />   Github </Button></a>
+                    </Html>
+                
                 </group>
+            </group>
+
                 {/* <Html 
                     transform
                     occlude="blending"
                     wrapperClass="personal-banner"
-                    position={ [ 4.4, 2.4, 4.4 ] }
-                    rotation-y={-1.6}
                 >
-                    <h1> Kendrick Drews </h1>
-                    <h3> Front End Developer / UI / UX </h3>
                     <a href={linkedInUrl} target='_blank'> <LinkedinOutlined /> LinkedIn </a>
                     <a href={githubUrl} target='_blank'> <GithubOutlined /> Github </a>
-                    <button> View Resume </button>
+                    <button> <DoubleLeftOutlined /> View Resume </button>
                 </Html> */}
         </PresentationControls>
 

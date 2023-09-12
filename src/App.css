@@ -92,3 +92,16 @@ canvas {
 .ant-btn-circle {
   border-radius: unset!important;
 }
+.banner-resume {
+  height: 300px;
+}
+.banner-btns {
+  width: 100%;
+  margin: 0;
+  padding: 4px 8px 4px 0px;
+  color:#40c7f7;
+  background: #ffffff;
+  justify-content: space-between;
+  border-radius: unset!important;
+  border: 1px solid #40c7f7;
+}
