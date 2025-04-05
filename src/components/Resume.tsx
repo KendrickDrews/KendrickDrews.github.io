@@ -45,14 +45,14 @@ export default function Resume() {
                 <Col span={16} />
             </Row>
             <Row align="top" justify="center"> 
-                <Col className='job-meta' span={jobMetaOffset.span}>
+                {/* <Col className='job-meta' span={jobMetaOffset.span}>
                         <Row justify="end"> <p> 07/22 - now </p></Row>
                         <Row justify="end"> <p> Freelance Contracting </p></Row>
                         <Row justify="end"> <p> Howell, MI / Remote </p></Row>
                 </Col> 
-                <Col span={jobMetaOffset.gap}> </Col> 
+                <Col span={jobMetaOffset.gap}> </Col>  */}
                 <Col span={16}> 
-                        <Row > <h3>Front End / Fullstack Developer</h3> </Row>
+                        <Row > <h3>Senior Front End / Fullstack Developer</h3> </Row>
                         <Row ><p> Handling all verbal and written communications between hosting companies, clients, and vendors. Designing, coding  CSS, React, and Typescript. Preparing multiple designs and wireframes for clients approval before proceeding with development. </p></Row>
                         <Row > 
                             <ul className='job-tech-stack'>
@@ -65,7 +65,7 @@ export default function Resume() {
             </Row>
             <Row align="top" justify="center"> 
                 <Col className='job-meta' span={jobMetaOffset.span}>
-                        <Row justify="end"> <p> 03/19 - 07/22 </p></Row>
+                        <Row justify="end"> <p> 03/19 - 04/25 </p></Row>
                         <Row justify="end"> <p> NU Borders </p></Row>
                         <Row justify="end"> <p> Reston VA / Remote </p></Row>
                 </Col> 

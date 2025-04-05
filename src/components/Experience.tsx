@@ -1,16 +1,16 @@
-import React, { useEffect, useRef } from 'react'
-import * as THREE from 'three'
-import { Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, PerspectiveCamera, Circle, Text, useMask, Plane  } from '@react-three/drei'
-import { Button, Tooltip  } from 'antd'
+import React from 'react'
+// import * as THREE from 'three'
+import { Html, PresentationControls, Environment,  Text, Plane  } from '@react-three/drei'
+import { Button } from 'antd'
 import Resume from './Resume'
-import { useFrame, useThree, extend } from '@react-three/fiber'
+import { useThree } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
 // import { useControls } from 'leva'
 import { DoubleLeftOutlined, GithubOutlined, LinkedinOutlined, ZoomInOutlined, ZoomOutOutlined } from '@ant-design/icons'
 import DesktopScene from './DesktopScene'
-import { useControls } from 'leva'
+// import { useControls } from 'leva'
 import { CameraController } from './CameraController'
-import { invert } from 'three/examples/jsm/nodes/Nodes.js'
+// import { invert } from 'three/examples/jsm/nodes/Nodes.js'
 
 
 
